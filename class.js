@@ -75,29 +75,35 @@ class Rental1{
 let rental=new Rental1("car object","Steph",20,30)
 console.log(rental2);
 
-// You are building a simple quiz app that contains multiple-choice questions. Your task is
+/ You are building a simple quiz app that contains multiple-choice questions. Your task is
 // to create two JavaScript classes: Question and Quiz. The Question class will represent
 // individual questions, and the Quiz class will manage a collection of questions and the
 // user's progress.
 // 1. Create a Question class with the following properties:
 // ● text(string): The text of the question.
-// ● options(array): An array containing the multiple-choice options
+// ● options(array): An array containing the multiple-choice options.
 // ● correctAnswer(string): The correct answer to the question.
 // The Question class should also have a method called checkAnswer that takes a
 // user's answer as a parameter and returns true if the answer is correct and false
-// otherwise.
-class Question{
-    constructor(text,options,correctAnswer){
-        this.text = text
-        this.options=options
-        this.correctAnswer
+// otherwise
+class Question {
+    constructor(text, options, correctAnswer) {
+      this.text = text;
+      this.options = options;
+      this.correctAnswer = correctAnswer;
     }
-} 
-
-
-
-
-// 2. Create a Quiz class with the following properties:
+    checkAnswer(userAnswer) {
+      return userAnswer === this.correctAnswer;
+    }
+  }
+  const q = new Question(
+    "Which day of the week is it?",
+    ["Monday", "Tuesday", "Wednesday", "Thursday"],
+    "Monday"
+  );
+  console.log(q.checkAnswer("Monday"));
+  console.log(q.checkAnswer("Thursday"));
+// Create a Quiz class with the following properties:
 // ● questions(array):An array of Question objects.
 // ● currentQuestionIndex(number): The index of the current question in the
 // questions array.
@@ -110,3 +116,34 @@ class Question{
 // ● submitAnswer: Takes a user's answer as a parameter, checks if the answer is
 // correct using the checkAnswer method of the Question class, and updates the
 // score if the answer is correct
+class Quiz {
+    constructor() {
+      this.questions = [];
+      this.currentQuestionIndex = 0;
+      this.score = 0;
+    }
+    addResults(question) {
+      this.questions.push(question);
+    }
+    nextResult() {
+      this.currentQuestionIndex++;
+    }
+    submitAnswer(userAnswer) {
+      const currentQuestion = this.questions[this.currentQuestionIndex];
+      if (currentQuestion.checkAnswer(userAnswer)) {
+        this.score++;
+      }
+    }
+  }
+  const q1 = new Question(
+    "Which is the day of the week is it?",
+    ["Monday", "Tuesday", "Wednesday", "Thursday"],
+    "Monday"
+  );
+  const q2 = new Question(
+    "Which month is it?",
+    ["Jan", "Feb", "March", "April"],
+  );
+  const quiz = new Quiz();
+  quiz.addResults(q1);
+  quiz.addResults(q2);
