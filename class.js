@@ -75,7 +75,7 @@ class Rental1{
 let rental=new Rental1("car object","Steph",20,30)
 console.log(rental2);
 
-/ You are building a simple quiz app that contains multiple-choice questions. Your task is
+// / You are building a simple quiz app that contains multiple-choice questions. Your task is
 // to create two JavaScript classes: Question and Quiz. The Question class will represent
 // individual questions, and the Quiz class will manage a collection of questions and the
 // user's progress.
